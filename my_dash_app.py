@@ -1,4 +1,4 @@
-# to run : python my_dash_app.py
+# to run : python3 my_dash_app.py
 
 
 import dash

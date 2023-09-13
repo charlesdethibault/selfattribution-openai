@@ -4,21 +4,16 @@ import streamlit as st
 import plotly.express as px
 import openai
 import altair as alt
-
 import pandas as pd
 pd.set_option('display.max_colwidth', 500)
 
-#@st.cache
+
+st.set_page_config(layout="wide")
 
 #FUNCTIONS
 def convert_df(df):
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
     return df.to_csv().encode('utf-8')
-
-
-
-
-
 
 # SIDEBAR
 
@@ -43,8 +38,6 @@ else:
         #st.write(df)
 
 
-def convert_df(df):
-   return df.to_csv(index=False).encode('utf-8')
 csv = convert_df(df)
 
 st.sidebar.download_button(
@@ -56,30 +49,28 @@ st.sidebar.download_button(
 )
 
 
-
-
-
-
 #BODY
 
 st.write('*Disclaimer: This app does not retain any user data. All processing is done through Streamlit and OpenAI services.It is the responsibility of the user to ensure that the Streamlit and OpenAI terms of service are acceptable and comply with applicable laws in their jurisdiction. The creators of this app assume no liability or responsibility for individual use.*')
 st.write("______________________________")
 openai.api_key = str(st.secrets["openai_key"])
-st.write(":pray: Donations are used to maintain the app, cover the deployment fees and create more cool stuff :pray:")
+st.write(":pray: Support our research and deployment efforts! Click here to Donate :pray:")
 
-# Embed PayPal donation button HTML code
-paypal_button_code = """
-<form action="https://www.paypal.com/donate" method="post" target="_top">
-   <input type="hidden" name="hosted_button_id" value="YOUR_BUTTON_ID_HERE">
-   <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button">
-   <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
+# PayPal logo image URL
+paypal_logo_url = "https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
+# PayPal donation link
+paypal_donation_link = "https://www.paypal.com/donate/?hosted_button_id=J454HKB6V8QPS"
+# Embed the PayPal button with the logo and link
+paypal_button_code = f"""
+<div style="text-align: center;">
+  <a href="{paypal_donation_link}" target="_blank">
+    <img src="{paypal_logo_url}" alt="PayPal Logo" style="max-width: 100%;">
+  </a>
+  <p><a href="{paypal_donation_link}" target="_blank">Donate with PayPal</a></p>
+</div>
 """
-
-# Display the PayPal donation button
+# Embed the PayPal button
 st.markdown(paypal_button_code, unsafe_allow_html=True)
-
-# st.markdown(donation_button_html, unsafe_allow_html=True)
 
 
 # Title
