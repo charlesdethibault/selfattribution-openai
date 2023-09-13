@@ -4,9 +4,7 @@ import streamlit as st
 import plotly.express as px
 import openai
 import altair as alt
-import docx2txt
 
-import os
 import pandas as pd
 pd.set_option('display.max_colwidth', 500)
 
