@@ -76,6 +76,11 @@ st.markdown(paypal_button_code, unsafe_allow_html=True)
 # Title
 st.title("Self Attribution Freetext Handler using AI")
 
+st.write("Introducing the 'Self Attribution Freetext Handler using AI' app, a powerful tool designed to transform your data effortlessly. Whether you're working with example data or your very own freetext self-attribution CSV file, our app simplifies the process. With just a few clicks, watch as your data comes to life. The magic begins with a click of the 'Run Code' button, which seamlessly queries the OpenAI API, turning your raw data into a neatly organized CSV file. This file not only preserves your original freetext responses but also adds valuable context, including the channel and source. Say goodbye to tedious data handling and hello to a more streamlined and exciting data analysis experience!")
+
+
+
+
 st.write("first 10 of the list")
 st.dataframe(df.head(10))
 #create prompt
